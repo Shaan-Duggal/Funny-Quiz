@@ -63,6 +63,15 @@ const questions = [
         ]
     },
     {
+        question: "Why did the JavaScript developer go broke?",
+        answers: [
+            { text: "They lost their function", correct: false },
+            { text: "They couldn't handle the async", correct: false },
+            { text: "They spent all their money on promises", correct: false },
+            { text: "They got caught in an infinite loop", correct: true }
+        ]
+    },
+    {
         question: "What do you call a programmer who can't parallelize their code?",
         answers: [
             { text: "A sequential coder", correct: false },
@@ -71,13 +80,14 @@ const questions = [
             { text: "A serial killer", correct: true }
         ]
     },
+    
     {
-        question: "Why did the JavaScript developer go broke?",
+        question: "Why did the developer go to the beach?",
         answers: [
-            { text: "They lost their function", correct: false },
-            { text: "They couldn't handle the async", correct: false },
-            { text: "They spent all their money on promises", correct: false },
-            { text: "They got caught in an infinite loop", correct: true }
+            { text: "To catch some waves", correct: false },
+            { text: "To get some vitamin D", correct: false },
+            { text: "To escape from bugs", correct: false },
+            { text: "To surf the net", correct: true }
         ]
     },
     {
@@ -89,15 +99,7 @@ const questions = [
             { text: "Hello World", correct: true }
         ]
     },
-    {
-        question: "Why did the developer go to the beach?",
-        answers: [
-            { text: "To catch some waves", correct: false },
-            { text: "To get some vitamin D", correct: false },
-            { text: "To escape from bugs", correct: false },
-            { text: "To surf the net", correct: true }
-        ]
-    },
+   
     {
         question: "What's a programmer's favorite type of coffee?",
         answers: [
@@ -134,6 +136,10 @@ function showQuestions(){
         button.innerText = answer.text;
         button.classList.add("btn");
         answerButton.appendChild(button);
+        if(answer.correct){
+            button.dataset.correct = answer.correct;
+        }
+        button.addEventListener("click", selectAnswer);
 
     });
 }
@@ -144,5 +150,25 @@ function resetState(){
         answerButton.removeChild(answerButton.firstChild);
     }
 }
+
+function selectAnswer(e){
+    const selectedBtn = e.target;
+    const iscorrect = selectedBtn.dataset.correct === "true";
+    if(iscorrect){
+        selectedBtn.classList.add("correct");
+    }
+    else{
+        selectedBtn.classList.add("incorrect");
+    }
+    Array.from(answerButton.children).forEach(button => {
+        if(button.dataset.correct === "true"){
+            button.classList.add("correct");
+        }
+        button.disabled = true;
+    });
+    nextButtons.style.display = "block";
+
+}
+
 
 startQuiz();
