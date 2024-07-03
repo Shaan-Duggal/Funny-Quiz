@@ -11,4 +11,4 @@ Embark on a journey through the absurdly amusing world of technology and artific
 - **Screenshot of a Right Answer**: ![alt text](image-1.png)
 - **Screenshot of the Final Score**: ![alt text](image-2.png)
 
-For any questions, suggestions, or digital existential crises, please open an issue in the repository.# Funny-Quiz
+Find it at: https://shaan-duggal.github.io/Funny-Quiz/
